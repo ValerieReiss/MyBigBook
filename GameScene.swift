@@ -8,13 +8,11 @@ import SpriteKit
 import GameplayKit
 
 class GameScene: SKScene {
-    
     override func didMove(to view: SKView) {
-      
+       
         let image = SKSpriteNode(imageNamed: "backgroundCover")
-        image.anchorPoint = CGPointMake(0.5, 0.5)
-        image.size = CGSize(width: self.size.width, height: self.size.height)
-        image.position = CGPointMake(CGRectGetMidX(self.frame), CGRectGetMidY(self.frame))
+        image.size = CGSize(width: 830, height: frame.height)
+        //image.position = CGPoint(x: frame.width/2, y: frame.height/2)
         image.zPosition = 0
         image.name = "nextPage"
         addChild(image)
@@ -29,8 +27,6 @@ class GameScene: SKScene {
         print ("readout \(location.x) and \(location.y)")
         let node = self.atPoint(location)
         if node.name == "nextPage"{
-            print ("One Object touched")
-            
             self.view?.presentScene(ContentScene(size: self.size),
             transition: .crossFade(withDuration: 1.5))
         } else if node.name != "nextPage" {print ("failed ButtonNextPage")}
